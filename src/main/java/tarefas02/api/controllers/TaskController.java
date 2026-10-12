@@ -8,6 +8,7 @@ import java.util.List; // Importa a interface  List para manipular onde a classe
 import org.springframework.beans.factory.annotation.Autowired; // injção automatica do Spring
 import org.springframework.http.ResponseEntity; // importa a classe para montar a resposta HTTP completa(status, headers, corpo)
 import org.springframework.validation.annotation.Validated;// importa anotação para habiltar suporte a validação no controller
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;// mapeia requisições do tipo delete
 import org.springframework.web.bind.annotation.GetMapping;// mapeia requisições do tipo GET
 import org.springframework.web.bind.annotation.PathVariable;// mapeia variaveis passadas diretamente via caminho da URL
@@ -26,6 +27,7 @@ import tarefas02.api.services.TaskService; // Importa a caçassse de serviço Ta
 @RestController  //Define a classeo com um controlador REST que retorna respostas em JSON
 @RequestMapping ("/task") // Define /task como a rota base de todos do endpoints deste controlador
 @Validated  // Habilita o suporte as validaçções dentro do controlador
+@CrossOrigin ("*")
 public class TaskController { // Declaração de Classe píbulica TaskController
 
     @Autowired 

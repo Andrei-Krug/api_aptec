@@ -18,6 +18,9 @@ import tarefas02.api.repositories.TaskRepository;
 // Importa a interface do repositório responsável pelas operações de banco de dados do User
 import tarefas02.api.repositories.UserRepository;
 
+import tarefas02.api.services.exceptions.ObjectNotFoundException;
+import tarefas02.api.services.exceptions.DataBindingViolationException;
+
 // Anotação que indica ao Spring que esta classe contém as regras de negócio da entidade User
 @Service
 public class UserService {
@@ -36,7 +39,7 @@ public class UserService {
         Optional<User> user = this.userRepository.findById(id);
         
         // Se o usuário existir, retorna o objeto; se estiver vazio, lança uma exceção RuntimeException
-        return user.orElseThrow(() -> new RuntimeException(
+        return user.orElseThrow(() -> new ObjectNotFoundException(
             "Usuário não encontrado! Id: " + id + ", Tipo: " + User.class.getName()
         ));
     }
@@ -78,9 +81,10 @@ public class UserService {
         try {
             // Solicita a remoção do usuário no banco de dados pelo ID
             this.userRepository.deleteById(id);
+            this.userRepository.flush();
         } catch (Exception e) {
             // Captura exceções (como violações de chave estrangeira, caso existam tarefas vinculadas) e lança mensagem customizada
-            throw new RuntimeException("Não é possível excluir pois há entidades relacionadas!");
+            throw new DataBindingViolationException("Não é possível excluir pois há entidades relacionadas!");
         }
     }
 }
