@@ -3,6 +3,7 @@ package tarefas02.api.models;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
@@ -16,6 +17,7 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import tarefas02.api.models.enums.ProfileEnums;
 
 @Entity
 @Table(name = User.TABLE_NAME)
@@ -102,5 +104,10 @@ public class User {
     @Override
     public int hashCode() {
         return Objects.hash(this.id, this.username, this.password);
+    }
+
+    public Set<ProfileEnums> getProfiles() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'getProfiles'");
     }
 }
