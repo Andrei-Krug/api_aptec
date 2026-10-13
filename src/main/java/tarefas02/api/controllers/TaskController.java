@@ -21,7 +21,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder; // I
 
 
 import jakarta.validation.Valid; // importa a anotação para acionar a validação do corpo da requisição
-import tarefas02.api.models.Task; // importa a entidade Task do pacote de modelos do projeto
+import tarefas02.api.models.Task; //importa a entidade Task do pacote de modelos do projeto
 import tarefas02.api.services.TaskService; // Importa a caçassse de serviço TaskService do projeto
 
 @RestController  //Define a classeo com um controlador REST que retorna respostas em JSON
