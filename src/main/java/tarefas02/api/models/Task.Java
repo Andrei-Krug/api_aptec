@@ -25,7 +25,7 @@ import lombok.Setter;
 @EqualsAndHashCode
 public class Task {
     public static final String TABLE_NAME = "task";
-
+//teste
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", unique = true)
