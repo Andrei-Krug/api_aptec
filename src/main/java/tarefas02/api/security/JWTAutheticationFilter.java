@@ -30,30 +30,30 @@ public class JWTAutheticationFilter  extends UsernamePasswordAuthenticationFilte
     }
 
     @Override 
-        public Authentication attempAuthentication(HttpServletRequest request, HttpServletResponse response)
-        throws AuthenticationException;{
+        public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
+        throws AuthenticationException{
             try{
                 User user = new ObjectMapper().readValue(request.getInputStream(), User.class);
                  
                 UsernamePasswordAuthenticationToken authToken = new UsernamePasswordAuthenticationToken(
-                    user.getUsername();
-                    user.getPassword();
+                    user.getUsername(),
+                    user.getPassword(),
                     new ArrayList<>()
                 );
-                return this.authenticate(authToken);
+                return this.authenticationManager.authenticate(authToken);
             } catch (IOException e){
                 throw new RuntimeException("Erro ao processar as credencias de autenticação",e);
             }
         }
 
         @Override 
-        protected  void successfullAuthentication(HttpServletRequest request, HttpServletResponse response,
+        protected  void successfulAuthentication(HttpServletRequest request, HttpServletResponse response,
             FilterChain filterChain, Authentication authResul) throws IOException, ServletException{
                 
-                UserSS = userSS = (UserSS) authResul.getPrincipal();
-                String token = this.jwtUtil.generateToken(userSS,getUsername());
+                UserSpringSecurity userSS = (UserSpringSecurity) authResul.getPrincipal();
+                String token = this.jwtUtil.generateToken(userSS.getUsername());
 
-                response.addHeader("Autorization", "Bearer", token);
+                response.addHeader("Autorization", "Bearer"+ token);
                 response.addHeader("access-control-expos-headers","Authorization");
 
             }
