@@ -1,4 +1,4 @@
-package tarefas02.api.repositories;
+/*package tarefas02.api.repositories;
 //teste
 
 import java.util.List;
@@ -35,5 +35,22 @@ public interface TaskRepository extends JpaRepository<Task, Long> {
     // =========================================================================
     @Query(value = "SELECT * FROM task t WHERE t.user_id = :id", nativeQuery = true)
     List<Task> findByUser_IdSQL(@Param("id") Long id);
-    */
+    
+} */
+
+
+    package tarefas02.api.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import tarefas02.api.models.Task;
+
+@Repository
+public interface TaskRepository extends JpaRepository<Task, Long> {
+
+    // Consulta derivada do Spring Data JPA para buscar todas as tarefas do usuário pelo ID
+    List<Task> findByUser_Id(Long id);
 }
