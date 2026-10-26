@@ -110,7 +110,7 @@ public class User { // Declaração da classe pública User
     }
 
     public void addProfile(ProfileEnums profile) { // Método utilitário para adicionar um novo perfil ao utilizador
-        this.profiles.add(profile.getCode()); // Extrai o código numérico do enum recebido e guarda-o no conjunto de perfis
+        this.profiles.add(profile.ordinal()); // Guarda a posição do perfil no conjunto de códigos
     }
 
     @Override // Indica a sobrescrita do método equals da classe genérica Object
