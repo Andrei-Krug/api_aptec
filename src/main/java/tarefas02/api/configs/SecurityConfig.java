@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UserDetailsService; // Inte
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder; // Encodificador de senhas BCrypt
 import org.springframework.security.web.SecurityFilterChain; // Componente que encadeia os filtros de segurança
 
-import tarefas02.api.security.JWTAutheticationFilter; // Filtro customizado de autenticação no login
+import tarefas02.api.security.JWTAuthenticationFilter; // Filtro customizado de autenticação no login
 import tarefas02.api.security.JWTAuthorizationFilter; // Filtro customizado de autorização por token
 import tarefas02.api.security.JWTUtil; // Utilitário para manipular tokens JWT
 

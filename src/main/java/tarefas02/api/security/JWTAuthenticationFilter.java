@@ -19,11 +19,11 @@ import jakarta.servlet.http.HttpServletResponse;
 import tarefas02.api.models.User;
 
 
-public class JWTAutheticationFilter  extends UsernamePasswordAuthenticationFilter{
+public class JWTAuthenticationFilter  extends UsernamePasswordAuthenticationFilter{
     private final AuthenticationManager authenticationManager;
     private final JWTUtil jwtUtil;
 
-    public JWTAutheticationFilter (AuthenticationManager authenticationManager,JWTUtil jwtUtil){
+    public JWTAuthenticationFilter (AuthenticationManager authenticationManager,JWTUtil jwtUtil){
         this.authenticationManager = authenticationManager;
         this.jwtUtil = jwtUtil;
         setFilterProcessesUrl("/login");
